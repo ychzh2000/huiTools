@@ -1,0 +1,161 @@
+div.music_download_box {
+    position: fixed;
+    top: 200px;
+    left: 20px;
+    height: 50px;
+    width: 50px;
+    background-color: #101010;
+    z-index: 999999;
+    line-height: 25px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+div.music_download_box.single {
+    height: 25px;
+}
+
+div.music_download_box a {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+div.music_download_box a:hover {
+    color: #000;
+    background-color: #ededed;
+}
+
+div.middle_content_box {
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 90%;
+    padding-top: 10%;
+    top: 0;
+}
+
+div.middle_content_box .content_container {
+    position: relative;
+    margin: 0 auto;
+    height: calc(80% - 20px);
+    background-color: #010101;
+    width: calc(80% - 20px);
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+div.middle_content_box .content_container .content {
+    word-break: break-all;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+div.middle_content_box .content_container .content::-webkit-scrollbar {
+    width: 0;
+}
+
+div.middle_content_box .content_container .content::-webkit-scrollbar-thumb {
+    background: #000;
+}
+
+div.middle_content_box .content_container .content::-webkit-scrollbar-track {
+    background: #000;
+}
+
+div.middle_content_box .content_container .arrow {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 99999;
+    background-color: #fff;
+    opacity: 0.5;
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+
+div.middle_content_box .content_container .arrow:hover {
+    transform: rotate(0);
+    top: 0;
+    right: 0;
+    transition: all 0.25s ease-out;
+}
+
+
+/*新版音乐下载器布局*/
+
+.ikrong-musicdownload {
+    position: fixed;
+    z-index: 999999;
+    left: 50px;
+    top: 20%;
+    border-radius: 50%;
+    background-color: #27AE60;
+    width: 60px;
+    height: 60px;
+    opacity: 0.4;
+    overflow: hidden;
+    display: none;
+}
+
+.ikrong-musicdownload .music-button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.ikrong-musicdownload div.download-list {
+    position: absolute;
+    padding-left: 80px;
+    left: -20;
+    top: -90px;
+    opacity: 0;
+    width: 60px;
+    height: 240px;
+    display: table;
+}
+
+.ikrong-musicdownload div.download-list div {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.ikrong-musicdownload div.download-list ul {
+    list-style: none;
+    position: relative;
+    left: 0;
+    width: 60px;
+    height: auto;
+    top: 0;
+    bottom: 0;
+}
+
+.ikrong-musicdownload div.download-list ul li {
+    width: 40px;
+    height: 40px;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgb(39, 174, 96);
+    border-radius: 50%;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+    margin-left: -60px;
+}

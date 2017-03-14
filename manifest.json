@@ -1,0 +1,73 @@
+{
+	"name": "惠工具", 
+	"description": "当前页面二维码,淘宝天猫返利,免费看会员视频,加密、哈希、编码计算,翻译,当前时间/时间戳...", 
+	"version": "0.0.7", 
+	"content_scripts":[
+		// {
+		// 	"matches": [ "http://*/*", "https://*/*", "file:///*"],
+		// 	"js": ["content.js"]
+		// },
+		{
+			"matches": ["http://detail.tmall.com/*" , "http://item.taobao.com/*","https://detail.tmall.com/*" , "https://item.taobao.com/*"],
+			"js": ["taobao.js"]
+		},
+		{
+			"matches": ["http://*.tmall.com/*","https://*.tmall.com/*"],
+			"js": ["tmall.js"]
+		},
+		{
+			"matches": ["http://*.taobao.com/*","https://*.taobao.com/*"],
+			"js": ["taobao2.js"]
+		},
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://*.iqiyi.com/v_*", "http://vip.iqiyi.com/*","http://*.iqiyi.com/dianying*" ],
+			"run_at": "document_end"
+		},
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://v.youku.com/*", "https://v.youku.com/*" ],
+			"run_at": "document_end"
+		},
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://*.le.com/ptv/*", "https://*.le.com/ptv/*" ],
+			"run_at": "document_end"
+		},
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://*.mgtv.com/v/*", "http://*.mgtv.com/b/*" ],
+			"run_at": "document_end"
+		} ,
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://v.qq.com/x/*", "https://v.qq.com/x/*" ],
+			"run_at": "document_end"
+		} ,
+		{
+			"css": [ "style.css" ],
+			"js": ["jquery.min.js", "function.js", "video.app.js" ],
+			"matches": [ "http://tv.sohu.com/2*", "http://film.sohu.com/*" ],
+			"run_at": "document_end"
+		}
+	],
+	"permissions": ["contextMenus", "tabs","storage", "http://*/","https://*/*", "file:///*"],
+	
+	// "background": {
+	// 	"scripts": ["myscript.js","qr.js", "crypto-js.js"] 
+	// },
+
+	"browser_action": {
+		"default_icon": "tool_64.png",
+		"default_title": "惠工具",
+		"default_popup": "popup.html"
+	},
+	
+	"icons": {"16": "tool_16.png","32": "tool_32.png","48": "tool_48.png","64": "tool_64.png","128": "tool_128.png"},
+	"manifest_version": 2 
+}

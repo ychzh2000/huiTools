@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+
+		#main{
+			font-size: 12px;
+			width: 500px;
+			margin: 10px;
+		}
+		#headers{
+			list-style: none;
+			background-color: #eef1f6;
+			padding: 4px;
+			border-bottom: 1px solid #d1dbe5;
+		}
+		#headers  span{
+			display: inline;
+			padding: 5px;
+			border-bottom-color: #fff;
+			cursor: pointer;
+		}
+		#headers .active{
+			/*border: solid 1px #20a0ff;*/
+			padding: 7px;
+			background-color: #fff;
+			border: 1px solid #d1dbe5;
+			border-bottom-color: #fff;
+			border-radius: 4px 4px 0 0;
+			border-bottom: none;
+		}
+		.tab{
+			display: none;
+		}
+
+		#btn_json, #btn_encry, #btn_decry, #btn_hash, #btn_hash5,#btn_encode, #btn_translate{
+			float: right;
+		}
+
+		textarea{
+			width: 494px;
+			height: 72px;
+		}
+
+		#json{
+			height: 200px;
+		}
+
+	</style>
+	<script src="jquery.min.js"></script>
+	<script src="qr.js"></script>
+	<script src="function.js"></script>
+	<script src="crypto-js.js"></script>
+</head>
+<body>
+
+	<div id="main">
+		<div id="headers">
+			<span class="active" data-id="tab1">二维码</span>
+			<span data-id="tab2">JSON解析</span>
+			<span data-id="tab3">加密/解密</span>
+			<span data-id="tab4">散列/哈希</span>
+			<span data-id="tab5">Hmac</span>
+			<span data-id="tab6">编码</span>
+			<span data-id="tab7">翻译</span>
+			<span data-id="tab8">杂项</span>
+		</div>
+
+
+		<div class="tab" id="tab1">
+			<textarea id="text1"></textarea>
+			<div id="qrDiv" style="width:200px;height:200px;margin:10px auto;"></div>
+		</div>
+
+		<div class="tab" id="tab2">
+			<textarea id="json" placeholder="JSON字符串"></textarea>
+			<span id="jsonHit"> &nbsp; </span>
+			<button id="btn_json">解析</button>
+		</div>
+
+		<div class="tab" id="tab3">
+			<textarea id="text3" placeholder="明文/密文"></textarea>
+			<input type="text" id="key3" placeholder="密钥">
+			<button id="btn_encry">加密</button>
+			<br>
+			<label><input type="radio" name="encry" value="AES" checked="true">AES</label>
+			<label><input type="radio" name="encry" value="DES">DES</label>
+			<label><input type="radio" name="encry" value="RC4">RC4</label>
+			<label><input type="radio" name="encry" value="Rabbit">Rabbit</label>
+			<label><input type="radio" name="encry" value="TripleDes">TripleDes</label>
+			<button id="btn_decry">解密</button>
+			<hr>
+			<textarea id="result3" readonly="true"> &nbsp; </textarea>
+		</div>
+
+		<div class="tab" id="tab4">
+			<textarea id="text4" placeholder="明文"></textarea>
+			<label><input type="radio" name="hash" value="MD5" checked="true">MD5</label>
+			<label><input type="radio" name="hash" value="SHA1">SHA1</label>
+			<label><input type="radio" name="hash" value="SHA224">SHA224</label>
+			<label><input type="radio" name="hash" value="SHA256">SHA256</label>
+			<label><input type="radio" name="hash" value="SHA384">SHA384</label>
+			<label><input type="radio" name="hash" value="SHA512">SHA512</label>
+			<button id="btn_hash">计算</button>
+			<hr>
+			<textarea id="result4" readonly="true"> &nbsp; </textarea>
+		</div>
+
+		<div class="tab" id="tab5">
+			<textarea id="text5" placeholder="明文"></textarea>
+			<label><input type="radio" name="hash" value="HmacMD5" checked="true">HmacMD5</label>
+			<label><input type="radio" name="hash" value="HmacSHA1">HmacSHA1</label>
+			<label><input type="radio" name="hash" value="HmacSHA224">HmacSHA224</label>
+			<label><input type="radio" name="hash" value="HmacSHA256">HmacSHA256</label>
+			<label><input type="radio" name="hash" value="HmacSHA384">HmacSHA384</label>
+			<label><input type="radio" name="hash" value="HmacSHA512">HmacSHA512</label>
+			<br>
+			<input type="text" id="key5" placeholder="密钥">
+			<button id="btn_hash5">计算</button>
+			<hr>
+			<textarea id="result5" readonly="true"> &nbsp; </textarea>
+		</div>
+
+		<div class="tab" id="tab6">
+			<textarea id="text6" placeholder="原文"></textarea>
+			<label><input type="radio" name="encode" value="Base64Encode" checked="true">Base64编码</label>
+			<label><input type="radio" name="encode" value="Base64Decode">Base64解码</label>
+			<label><input type="radio" name="encode" value="URLEncode">URL编码</label>
+			<label><input type="radio" name="encode" value="URLDecode">URL解码</label>
+			<button id="btn_encode">计算</button>
+			<hr>
+			<textarea id="result6" readonly="true"> &nbsp; </textarea>
+		</div>
+
+		<div class="tab" id="tab7">
+			<textarea id="text7" placeholder="中文/英文"></textarea>
+			<!-- <label><input type="radio" name="translate" value="baidu">百度</label>
+			<label><input type="radio" name="translate" value="youdao">有道</label> -->
+			<button id="btn_translate">翻译</button>
+			<hr>
+			<textarea id="result7" readonly="true"> &nbsp; </textarea>
+		</div>
+
+		<div class="tab" id="tab8">
+			<br>
+			<label><input type="checkbox" id="chk_auto" checked="true" />当前时间</label><br>
+			<input id="inp_ts"><button id='btn_ts'>时间戳转日期</button><br>
+			<input id="inp_dt"><button id='btn_dt'>日期转时间戳</button><br>
+		</div>
+
+	</div>
+
+
+</body>
+</html>
